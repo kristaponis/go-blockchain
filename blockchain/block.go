@@ -13,6 +13,7 @@ type Block struct {
 	PrevHash []byte
 	Hash     []byte
 	Data     []byte
+	Nonce    int
 }
 
 func (b *Block) DeriveHash() {
@@ -28,7 +29,7 @@ func (bc *BlockChain) AddBlock(data string) {
 }
 
 func CreateBlock(data string, prevHash []byte) *Block {
-	block := &Block{prevHash, []byte{}, []byte(data)}
+	block := &Block{prevHash, []byte{}, []byte(data), 0}
 	block.DeriveHash()
 	return block
 }
